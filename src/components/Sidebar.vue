@@ -12,7 +12,19 @@
       <div
         class="bg-gray-100 w-full h-full border-r shadow-md overflow-auto overflow-x-hidden z-30"
       >
-        <p>TEST</p>
+        <ul v-for="section in componentSections" :key="section.name">
+          <li class="px-2 mt-6">
+            <span class="text-md title-font text-gray-700 tracking-widest font-semibold">{{section.name}}</span>
+            <ul v-for="component in section.components" :key="component.name">
+              <li class="mt-2">
+                <div class="text-sm text-gray-600 tracking-widest font-medium title-font truncate text-center">{{component.name}}</div>
+                <div class="relative h-20 bg-gray-700 rounded-lg overflow-hidden shadow-lg">
+                  <router-link :to="component.url" tag="img" class="w-full h-full object-center cursor-pointer" :alt="component.name" :src="getImgUrl(component.img)"></router-link>
+                </div>
+              </li>
+            </ul>
+          </li>
+        </ul>
       </div>
     </aside>
   </transition>
@@ -28,8 +40,11 @@ export default {
   },
   computed: {
     openSideMenu: function () {
-      return this.$store.getters.sideMenuOpen;
+      return this.$store.getters.sideMenuOpen
     },
+    componentSections: function() {
+      return this.$store.getters.componentSections
+    }
   },
   methods: {
     toggleSidebar() {
@@ -40,6 +55,12 @@ export default {
         that.openIcon = !that.openIcon;
       }, 500);
     },
+    getImgUrl(endpoint) {
+      var images = require.context("@")
+      return images('./' + endpoint)
+    },
   },
+  mounted: function() {
+  }
 };
 </script>

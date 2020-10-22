@@ -2,10 +2,13 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 Vue.use(Vuex)
 
+import { componentSections } from './componentSections.js'
+
 const store = new Vuex.Store({
   state: {
     sideMenuOpen: true,
-    toggling: false
+    toggling: false,
+    componentSections
   },
   mutations: {
     toggleSideMenu(state) {
@@ -19,7 +22,8 @@ const store = new Vuex.Store({
     }
   },
   getters: {
-    sideMenuOpen: state => state.sideMenuOpen
+    sideMenuOpen: state => state.sideMenuOpen,
+    componentSections: state => state.componentSections
   }
 })
 

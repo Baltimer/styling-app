@@ -1,3 +1,4 @@
+/* eslint-disable */
 import Vue from 'vue'
 import Router from 'vue-router'
 
@@ -13,6 +14,13 @@ const router = new Router({
     {
       path: '',
       component: () => import('@/views/Index.vue')
+    },
+    /**
+     * COMPONENTS
+     */
+    {
+      path: '/cards/simple-card',
+      component: () => import('@/components/cards/SimpleCard.vue')
     }
   ]
 })

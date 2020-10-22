@@ -3,7 +3,7 @@
     <Sidebar />
     <Header />
     <main class="main-container overflow-auto fixed mt-16 top-0 left-0 w-full">
-      <router-view></router-view>
+      <router-view class="h-full w-full flex justify-center items-center"></router-view>
     </main>
   </div>
 </template>
